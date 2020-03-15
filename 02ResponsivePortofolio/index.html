@@ -14,49 +14,107 @@
     <title>Adaptive Portfolio Home</title>
   </head>
 
-  <body>
-
-    <div> <!--  Nav Bar  -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="index.html">Joshua Stillion</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="index.html">About <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="portfolio.html">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+  <body
+    style="background-image: url(https://i.pinimg.com/originals/fa/75/62/fa756211a6db6b033b0731b4764ea7b4.jpg);"
+  >
+    <div>
+      <!--  Nav Bar  -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Joshua Stillion</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html"
+                >About <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="portfolio.html">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
+
+
+     <!-- Debugging info:  Shows which Size is active based on browser size -->
+     <br />
+     <div class="d-none d-xl-block">
+       Block Size: <span class="badge badge--inline badge-success">XL</span>
+     </div>
+     <div class="d-none d-lg-block d-xl-none">
+       Block Size: <span class="badge badge--inline badge-warning">LG</span>
+     </div>
+     <div class="d-none d-md-block d-lg-none">
+       Block Size: <span class="badge badge--inline badge-danger">MD</span>
+     </div>
+     <div class="d-none d-sm-block d-md-none">
+       Block Size: <span class="badge badge--inline badge-info">SM</span>
+     </div>
+     <div class="d-block d-sm-none">
+       Block Size: <span class="badge badge--inline badge-secondary">XS</span>
+     </div>
+     <br />
+
+
 
     <div class="container">
-      
-        <div class="card">
+      <div class="row">
+        <div class="col-9">
+          <div class="card">
             <div class="card-body">
               <h5 class="card-title">About Me</h5>
-              <hr>
-              <img src="Assets/Images/Nani.jpg" style="width:250px" class="card-img-top float-left mr-3" alt="Nani Temari">
-              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis non neque sapiente, numquam beatae minus atque, alias modi ratione doloribus odit repudiandae inventore optio vero delectus quae impedit, mollitia et.Animi consectetur repudiandae veniam quasi voluptatibus minus impedit, saepe sint. Dolorem, expedita. Ducimus neque est molestiae accusamus fuga tenetur, nesciunt ea? Beatae fugiat eligendi ut culpa nulla, illum provident fugit?</p>
+              <hr />
+              <img
+                src="Assets/Images/Nani.jpg"
+                style="width:75%"
+                class="card-img-top float-left mr-3"
+                alt="Nani Temari"
+              />
+              <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Veritatis non neque sapiente, numquam beatae minus atque, alias
+                modi ratione doloribus odit repudiandae inventore optio vero
+                delectus quae impedit, mollitia et.Animi consectetur repudiandae
+                veniam quasi voluptatibus minus impedit, saepe sint. Dolorem,
+                expedita. Ducimus neque est molestiae accusamus fuga tenetur,
+                nesciunt ea? Beatae fugiat eligendi ut culpa nulla, illum
+                provident fugit?
+              </p>
             </div>
+          </div>
         </div>
-
-
-
+      </div>
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
