@@ -65,31 +65,33 @@ function generatePassword() {
 
 function userCriteriaChooser() { // gets user to choose password chracter pool
   lowerCheck = confirm("Do you want lower case characters in your password?");
+    console.log(lowerCheck);
   upperCheck = confirm("Do you want upper case characters in your password?");
+    console.log(upperCheck);
   numCheck = confirm("Do you want numbers in your password?");
+    console.log(numCheck);
   specCheck = confirm("Do you want special characters in your password?");
-
-  console.log(lowerCheck);
-  console.log(upperCheck);
-  console.log(numCheck);
-  console.log(specCheck);
+    console.log(specCheck);
 }
 
 function checkCriteria() {
-  if (lowerCheck) { userTypes += lowerArr } // concat lowercase alphabet if user says yes
-  if (upperCheck) { userTypes += upperArr } // concat uppercase alphabet if user says yes
-  if (numCheck) { userTypes += numArr } // concat numbers 0-9 if user says yes
-  if (specCheck) { userTypes += specArr } // concat special characters if user says yes
-
-  console.log(userTypes); // debug userType value
+  if (lowerCheck) { userTypes = userTypes.concat(lowerArr); } // concat lowercase alphabet if user says yes
+    console.log(userTypes); 
+  if (upperCheck) { userTypes = userTypes.concat(upperArr); } // concat uppercase alphabet if user says yes
+    console.log(userTypes); 
+  if (numCheck) { userTypes = userTypes.concat(numArr); } // concat numbers 0-9 if user says yes
+    console.log(userTypes); 
+  if (specCheck) { userTypes = userTypes.concat(specArr); } // concat special characters if user says yes
+    console.log(userTypes); 
 }
 
 function askUserPassLength() {  
   for (var i = 0; i < 1; i++) {
   var askUser = prompt("How long do you want your password to be? Type a number between 8-128"); // gets user input
-    if (parseInt(askUser) < 8 || parseInt(askUser) > 128) { // if not 8-128 then get user input again
+  console.log(askUser);
+    if (askUser < 8 || askUser > 128) { // if not 8-128 then get user input again
       alert("Please enter in a number netween 8 and 128"); i--;
-    } else if (parseInt(askUser) >= 8 && parseInt(askUser) <= 128) { // return user value if between 8-128
+    } else if (askUser >= 8 && askUser <= 128) { // return user value if between 8-128
         return askUser; }
   }
 }
@@ -98,7 +100,8 @@ function passwordMaker() {
   var ranPass = ""; // temp password holder
 
   for (var i = 0; i < userPassLength; i++) { // loops for user picked password length
-    ranPass =+ userTypes[Math.floor(Math.random()*userTypes.length)]; // add randomized character from user picked list
+    ranPass = ranPass.concat(userTypes[Math.floor(Math.random()*userTypes.length)]); // add randomized character from user picked list
+    console.log(ranPass);
   }
   console.log(ranPass); // debug ranPass value
   return ranPass;
