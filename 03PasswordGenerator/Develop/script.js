@@ -24,10 +24,10 @@ var specCheck = false; // checks for user confirmation
 
 //-------------------------- adds user options to randomization pool
 var userTypes = []; 
-var lowerArr = ["abcdefghijklmnopqrstuvwxyz"].split(""); 
-var upperArr = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"].split("");
-var numArr = ["0123456789"].split("");
-var specArr = ["!@#$%^&*()-_=+"].split(""); 
+var lowerArr = "abcdefghijklmnopqrstuvwxyz".split(""); 
+var upperArr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+var numArr = "0123456789".split("");
+var specArr = "!@#$%^&*()-_=+".split(""); 
 //-------------------------- adds user options to randomization pool
 
 //-----------------------------------------------------------------------------------
@@ -88,7 +88,7 @@ function askUserPassLength() {
   for (var i = 0; i < 1; i++) {
   var askUser = prompt("How long do you want your password to be? Type a number between 8-128"); // gets user input
     if (parseInt(askUser) < 8 || parseInt(askUser) > 128) { // if not 8-128 then get user input again
-      alert("Please enter in a number netween 8 and 128") i--;
+      alert("Please enter in a number netween 8 and 128"); i--;
     } else if (parseInt(askUser) >= 8 && parseInt(askUser) <= 128) { // return user value if between 8-128
         return askUser; }
   }
