@@ -9,7 +9,7 @@
 
 <body>
     
-   <!-- Planner --
+   <!-- Planner ------------------------
         Main game screen
             - Welcome header
             - Short descirption
@@ -28,7 +28,7 @@
                 - store each question with its answers in objects?
             - tell if got question wrong or right
                 - transition screen
-    -->
+    ------------------------------------------- --> 
    
     <!-- Quiz text and button container -->
     <div id="" class="container" style="margin-top: 100px;">
@@ -36,13 +36,13 @@
         <div class="row">
             <div class="col" style="text-align: center" id="headerText">
                 <!-- Welcome page and question text gets injected here -->
-                <h1 id="headerText">Coding Quiz Challenge</h1> 
+                
             </div>
         </div>
         <div class="row">
-            <div class="col" style="text-align: center">
+            <div class="col" style="text-align: center" id="welcomeMessage">
                 <!-- Weclome text under header on welcome page -->
-                <p id="">This is a 6 question multiple-choice quiz. Try to get the best high score you can!</p>
+                
             </div>
         </div>
         <div class="row">
@@ -72,33 +72,73 @@
         <div class="row">
             <div class="col">
                 <!-- holder for <hr> tag and correct or incorrent text -->
-
+                <p id="rightWrong"></p>
             </div>
         </div>
         
     </div>
    
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
-   
+   <script>
+        
+        // test \\
+        isAnswerRight(true);
+        // test \\
+
         // Question and answers objects \\
         var gameScreens = {
-        q1 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
-        q2 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
-        q3 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
-        q4 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
-        q5 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
-        q6 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"}
+            q1 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+            q2 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+            q3 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+            q4 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+            q5 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+            q6 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"}
         };
         // Question and answers objects \\
     
-        // Welcome screen text
+        // Welcome screen text \\ 
         var welcomeScreen = {
-            welcomeHeader : "Coding Quiz Challenge",
-            welcomeMessage : "This is a 6 question multiple-choice quiz. Try to get the best high score you can!"
+            header : "Coding Quiz Challenge",
+            message : "This is a 6 question multiple-choice quiz. Try to get the best high score you can!"
         }
-        // Welcome screen text
+        // Welcome screen text \\
+
+
+        // Clear screen function \\
+        function clearScreen() {
+            console.log("---function clearScreen called---");
+
+            $("#headerText").clear();
+            $("#welcomeMessage").clear();
+            $("a1").clear();
+            $("a2").clear();
+            $("a3").clear();
+            $("a4").clear();
+            $("#rightWrong").clear();
+        }
+        // Clear screen function \\
+
+
+        // correct or incorrect message function \\
+        function isAnswerRight(bool) {
+            console.log("---function isAnswerRight called---");
+
+            var rightWrong = $("#rightWrong");
+            
+            if (bool === true) {
+                rightWrong.append()
+            } else {}
+        }
+        // correct or incorrect message function \\
 
     </script>
+
+    <!-- Jquery import -->
+    <script 
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+    <!-- Jquery import -->
 
 </body>
 </html>
