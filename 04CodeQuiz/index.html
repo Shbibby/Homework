@@ -18,7 +18,7 @@
             - Finish message 
             - Enter initial prompt
             - High score counter
-                -if higher announce score is higher
+                - if higher announce score is higher
                 - clear scores button
                 - ask name
             - Play again button
@@ -34,62 +34,71 @@
     <div id="" class="container" style="margin-top: 100px;">
 
         <div class="row">
-            <div class="col" style="text-align: center;">
-                <h1 id="questionText">Coding Quiz Challenge</h1>
+            <div class="col" style="text-align: center" id="headerText">
+                <!-- Welcome page and question text gets injected here -->
+                <h1 id="headerText">Coding Quiz Challenge</h1> 
             </div>
         </div>
         <div class="row">
-            <div class="col" style="text-align: center;">
+            <div class="col" style="text-align: center">
+                <!-- Weclome text under header on welcome page -->
                 <p id="">This is a 6 question multiple-choice quiz. Try to get the best high score you can!</p>
             </div>
         </div>
         <div class="row">
             <div class="col" id="a1">
+                <!-- holder for answer 1 button -->
 
             </div>
         </div>
         <div class="row">
             <div class="col" id="a2">
+                <!-- holder for answer 2 button -->
                 
             </div>
         </div>
         <div class="row">
             <div class="col" id="a3">
+                <!-- holder for answer 3 button -->
                 
             </div>
         </div>
         <div class="row">
             <div class="col" id="a4">
+                <!-- holder for answer 4 button -->
                 
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <hr>
-                <p></p>
+                <!-- holder for <hr> tag and correct or incorrent text -->
+
             </div>
         </div>
         
     </div>
    
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
-
-    // Question and answers objects \\
-    var gameScreens = {
+   
+        // Question and answers objects \\
+        var gameScreens = {
         q1 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
         q2 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
         q3 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
         q4 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
         q5 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
         q6 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"}
-    };
-    // Question and answers objects \\
+        };
+        // Question and answers objects \\
     
-    // 
+        // Welcome screen text
+        var welcomeScreen = {
+            welcomeHeader : "Coding Quiz Challenge",
+            welcomeMessage : "This is a 6 question multiple-choice quiz. Try to get the best high score you can!"
+        }
+        // Welcome screen text
 
-
-
-   </script>
+    </script>
 
 </body>
 </html>
