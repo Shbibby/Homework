@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Coding Quiz</title>
 </head>
 
@@ -27,110 +28,168 @@
             - Choice of 4 options
                 - store each question with its answers in objects?
             - tell if got question wrong or right
-                - transition screen
+        
     ------------------------------------------- --> 
    
     <!-- Quiz text and button container -->
     <div id="" class="container" style="margin-top: 100px;">
 
         <div class="row">
-            <div class="col" style="text-align: center" id="headerText">
+            <div class="col" style="text-align: center">
+                <h1 id="questionText">
                 <!-- Welcome page and question text gets injected here -->
-                
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" style="text-align: center" id="welcomeMessage">
-                <!-- Weclome text under header on welcome page -->
-                
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" id="a1">
-                <!-- holder for answer 1 button -->
 
+                </h1>
             </div>
         </div>
         <div class="row">
-            <div class="col" id="a2">
-                <!-- holder for answer 2 button -->
-                
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" id="a3">
-                <!-- holder for answer 3 button -->
-                
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" id="a4">
-                <!-- holder for answer 4 button -->
-                
+            <div class="col" style="text-align: center">
+                <p id="welcomeMessage">
+                <!-- Weclome text under header on welcome page -->
+    
+                </p>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <!-- holder for <hr> tag and correct or incorrent text -->
-                <p id="rightWrong"></p>
+                <button style="margin-bottom: 7px;" type="button" class="btn btn-danger" id="a1" value="a">
+                    <!-- holds answer choice A text -->
+                    A. 
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" id="a2">
+                <button style="margin-bottom: 7px;" type="button" class="btn btn-warning" id="a2" value="b">
+                    <!-- holds answer choice B text -->
+                    B. 
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" id="a3">
+                <button style="margin-bottom: 7px;" type="button" class="btn btn-success" id="a3" value="c">
+                    <!-- holds answer choice C text -->
+                    C. 
+                </button>      
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" id="a4">
+                <button style="margin-bottom: 7px;" type="button" class="btn btn-primary" id="a4" value="d">
+                    <!-- holds answer choice D text -->
+                    D. 
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr>
+                <p id="rightWrong">
+                    <!-- "correct" or "incorrect" -->
+                </p>
             </div>
         </div>
         
     </div>
    
-   <script>
+<script>
         
-        // test \\
-        isAnswerRight(true);
-        // test \\
+    // test \\
+    isAnswerRight(true);
+    clearScreen();
+    // test \\
 
-        // Question and answers objects \\
-        var gameScreens = {
-            q1 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
-            q2 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
-            q3 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
-            q4 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
-            q5 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
-            q6 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"}
-        };
-        // Question and answers objects \\
+
+    // Vars for the game \\
+    var isGameDone = false;
+    var qText = $("#questionText");
+    var welcomeMessage = $("#welcomeMessage");
+    var ans1 = $("#a1");
+    var ans2 = $("#a2");
+    var ans3 = $("#a3");
+    var ans4 = $("#a4");
+    var rightWrong = $("#rightWrong"); 
+    // ------------------------------- Make answers
+    var makeChoiceA = "A. ";
+    var makeChoiceB = "B. ";
+    var makeChoiceC = "C. ";
+    var makeChoiceD = "D. ";
+    // Vars for the game \\
+
+
+    // Question and answers objects \\
+    var gameScreens = {
+        q1 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+        q2 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+        q3 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+        q4 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+        q5 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+        q6 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"}
+    };
+    // Question and answers objects \\
     
-        // Welcome screen text \\ 
-        var welcomeScreen = {
-            header : "Coding Quiz Challenge",
-            message : "This is a 6 question multiple-choice quiz. Try to get the best high score you can!"
-        }
-        // Welcome screen text \\
+    // Answer key array \\
+    var answerKey = ["1","2","3","4","5","6"];
+    // Answer key array \\
+    
+
+    // Welcome screen text \\ 
+    var welcomeScreen = {
+        header : "Coding Quiz Challenge",
+        message : "This is a 6 question multiple-choice quiz. Try to get the best high score you can!"
+    }
+    // Welcome screen text \\
 
 
-        // Clear screen function \\
-        function clearScreen() {
-            console.log("---function clearScreen called---");
+    // Clear screen function \\
+    function clearScreen() {
+        console.log("---function-[ clearScreen ]-called---");
 
-            $("#headerText").clear();
-            $("#welcomeMessage").clear();
-            $("a1").clear();
-            $("a2").clear();
-            $("a3").clear();
-            $("a4").clear();
-            $("#rightWrong").clear();
-        }
-        // Clear screen function \\
+        $("#questionText").empty();
+        $("#welcomeMessage").empty();
+        $("a1").empty();
+        $("a2").empty();
+        $("a3").empty();
+        $("a4").empty();
+        $("#rightWrong").empty();
+    }
+    // Clear screen function \\
 
 
-        // correct or incorrect message function \\
-        function isAnswerRight(bool) {
-            console.log("---function isAnswerRight called---");
+    // correct or incorrect message function \\
+    function isAnswerRight(bool) {
+        console.log("---function-[ isAnswerRight ]-called---");
 
-            var rightWrong = $("#rightWrong");
+        var rightWrong = $("#rightWrong");
             
-            if (bool === true) {
-                rightWrong.append()
-            } else {}
-        }
-        // correct or incorrect message function \\
+        if (bool === true) {
+                
+        } else {}
+    }
+    // correct or incorrect message function \\
 
-    </script>
+
+    // Make button function \\
+    function makeChoice(letter){
+
+    }
+    // Make button function \\
+
+
+
+    // Run the game \\
+    while (!isGameDone) {
+
+    qText.text(welcomeScreen.header);
+    welcomeMessage.text(welcomeScreen.message)
+    break;
+    }
+    // Run the game \\
+
+
+
+</script>
 
     <!-- Jquery import -->
     <script 
