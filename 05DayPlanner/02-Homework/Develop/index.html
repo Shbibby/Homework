@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Work Day Scheduler</title>
+  </head>
+
+  <body>
+    <header class="jumbotron">
+      <h1 class="display-3">Work Day Scheduler</h1>
+      <p class="lead">A simple calendar app for scheduling your work day</p>
+      <p id="currentDay" class="lead"></p>
+    </header>
+    <div id="plannerContainer" class="container">
+      <!-- Timeblocks go here -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  </body>
+
+  <script>
+
+    makeHourRows();
+    addButtonListeners();
+   
+
+    var hourActivities = loadObjArr();
+    console.log(hourActivities);
+
+    // display current day at top of screen \\
+    $("#currentDay").text(moment().format("MMMM Do YYYY, h:mm:ss a"));
+
+    $("#pastHour1").text(moment().subtract(1, "hours").format("h"));
+    $("#currentHour1").text(moment().format("h"));
+    $("#futureHour1").text(moment().add(1, "hours").format("h"));
+
+
+
+    function saveObjArr(saveData) {
+      console.log("[saveObjArr]");
+      localStorage.removeItem("localPlannerObj")
+
+      if (saveData === null || saveData === "") {
+        localStorage.setItem("localPlannerObj", "[]");
+      } else {
+        localStorage.setItem("localPlannerObj", JSON.stringify(saveData));
+      }
+    }
+
+    function loadObjArr() {
+      console.log("[loadObjArr]");
+
+      var fileData = localStorage.getItem("localPlannerObj");
+      if (fileData === null) {
+        fileData = "[]";
+      }
+      var objFileData = JSON.parse(fileData);
+
+      return objFileData;
+    }
+
+
+    function makeSample() {
+      console.log("[makeSample]");
+
+      var plannerObj = [
+      { rowId: "2020040401", desc: "today is hour 0" },
+      { rowId: "2020040402", desc: "today is hour 2" },
+      { rowId: "2020040403", desc: "today is hour 3" }
+      ];
+
+      saveObjArr(plannerObj);
+    }
+
+    function makeHourRow(rowId, hour) {
+      console.log("[makeHourRow]");
+
+      $("#plannerContainer").append(`
+      <div class="row" id="${rowId}">
+          <div class="col-1 border">${hour}</div>
+          <div class="col-10 border border-secondary p-0 d-flex"> <input id="${rowId}-text" class="w-100" type="text"> </div>
+          <div class="col-1 border bg-primary p-0 d-flex"> <button class="w-100" id="${rowId}-button"> Save </button> </div>
+      </div>
+      `)
+    }
+
+    function makeHourRows() {
+      console.log("[makeHourRows]");
+
+      $("#plannerContainer").empty();
+
+      for (i = 0; i < 24; i++) {
+        var currentTime = moment().startOf('day').add(i, 'hours');
+        var rowId = currentTime.format("YYYYMMDDHH");
+        var hourName = currentTime.format('h a');
+        makeHourRow(rowId, hourName);
+      }
+
+    }
+
+    function addButtonListeners() {
+      console.log("[addButtonListeners]");
+
+      for (i = 0; i < 24; i++) {
+        var currentTime = moment().startOf('day').add(i, 'hours');
+        var rowId = currentTime.format("YYYYMMDDHH");
+        var buttonName = `${rowId}-button`
+
+
+        console.log(buttonName)
+
+        $(`#${buttonName}`).click(function() {
+          scrapeLocalRowData(`${rowId}`);
+        });
+      }
+    }
+
+    function scrapeLocalRowData(itemId) {
+      console.log("[scrapeLocalRowData]" + itemId);
+
+      var textName = `${itemId}-text`
+      var textValue = $(`#${textName}`).text();
+      var rowItem = hourActivities.find(e => e.rowId === itemId);
+
+      console.log("RowItem -> " + rowItem);
+
+      if (rowItem === null || rowItem === undefined) {
+        // create one
+        var newObj = {rowId: itemId, desc: textValue};
+        hourActivities.push(newObj);
+      } else {
+        // update current one
+        rowItem.desc = textValue;
+        
+      }
+      saveObjArr(hourActivities);
+    }
+
+    
+  </script>
+</html>
